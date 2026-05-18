@@ -1,5 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 
 customer_df = pd.read_csv(r"C:\Data_Base\Data\olist_customers_dataset.csv")
 order_items_df = pd.read_csv(r"C:\Data_Base\Data\olist_order_items_dataset.csv")
@@ -7,8 +9,18 @@ order_payments_df = pd.read_csv(r"C:\Data_Base\Data\olist_order_payments_dataset
 order_reviews_df = pd.read_csv(r"C:\Data_Base\Data\olist_order_reviews_dataset.csv")
 orders_df = pd.read_csv(r"C:\Data_Base\Data\olist_orders_dataset.csv")
 products_df = pd.read_csv(r"C:\Data_Base\Data\olist_products_dataset.csv")
+geolocation_df = pd.read_csv(r"C:\Data_Base\Data\olist_geolocation_dataset.csv")
+sellers_df = pd.read_csv(r"C:\Data_Base\Data\olist_sellers_dataset.csv")
+product_category_name_translation_df = pd.read_csv(r"C:\Data_Base\Data\product_category_name_translation.csv")
 
-engine = create_engine("postgresql+psycopg2://neondb_owner:npg_G6rXFW2Pieqg@ep-soft-butterfly-alwuk7e8.c-3.eu-central-1.aws.neon.tech:5432/neondb")
+load_dotenv()
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
+host = os.getenv("DB_HOST")
+port = os.getenv("DB_PORT")
+database = os.getenv("DB_NAME")
+
+engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}")
 
 customer_df.to_sql(name="olist_customers_dataset",
                    con=engine,
@@ -45,6 +57,25 @@ products_df.to_sql(name="olist_products_dataset",
                    schema="raw",
                    if_exists="replace",
                    index=False)
+
+geolocation_df.to_sql(name="olist_geolocation_dataset",
+                   con=engine,
+                   schema="raw",
+                   if_exists="replace",
+                   index=False)
+
+sellers_df.to_sql(name="olist_sellers_dataset",
+                   con=engine,
+                   schema="raw",
+                   if_exists="replace",
+                   index=False)
+
+product_category_name_translation_df.to_sql(name="product_category_name_translation_df",
+                   con=engine,
+                   schema="raw",
+                   if_exists="replace",
+                   index=False)
+
 print("The data was sent successfully!!!")
 
 
