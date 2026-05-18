@@ -1,2 +1,4 @@
 Virtual_env_project
 .project
+.dbeaver/
+.env
