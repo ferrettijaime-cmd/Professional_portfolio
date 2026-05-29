@@ -2,7 +2,7 @@ with order_level as (
 
 select
     o.order_id,
-    o.customer_id,
+    c.customer_unique_id,
     c.customer_state,
 
     sum(oi.price) as total_price,
@@ -31,7 +31,7 @@ left join analytics.dim_customers c
 
 group by
     o.order_id,
-    o.customer_id,
+    c.customer_unique_id,
     c.customer_state,
     o.order_purchase_timestamp::date,
     o.delivery_delay_days,
@@ -40,7 +40,7 @@ group by
 customer_level as (
 
 select
-    customer_id,
+    customer_unique_id,
     
     avg(total_paid_items) as avg_order_value,
     
@@ -65,7 +65,7 @@ select
    
 from order_level
 
-group by customer_id
+group by customer_unique_id
 ),
 customer_dataset as (
 select 
