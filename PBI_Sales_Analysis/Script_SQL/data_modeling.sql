@@ -12,7 +12,7 @@ with sales_analysis as (
 )
 
 select *
-from sales_analysis;
+from sales_analysis
 
 
 
