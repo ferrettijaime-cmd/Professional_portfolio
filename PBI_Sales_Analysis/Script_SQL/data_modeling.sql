@@ -62,10 +62,27 @@ select *
 from category_analysis
 where rn = 1;
 
-
+with geolocation_city as(
+select 
+      c.customer_city,
+      avg(g.geolocation_lat),
+      avg(g.geolocation_lng)
+from
+    analytics.dim_customers c 
+left join analytics.dim_geolocation g
+     on c.customer_city = g.geolocation_city
+group by c.customer_city
+)
+select *
+from geolocation_city
+where customer_city is not null
       
-      
-
+select
+    geolocation_city,
+    avg(geolocation_lat) as latitude,
+    avg(geolocation_lng) as longitude
+from analytics.dim_geolocation
+group by geolocation_city
       
       
       
