@@ -1,0 +1,44 @@
+--What is the volume of items shipped?, How many are pending?, During what period are the most orders received?---
+---What is the approval time?, How long does it take the delivery person to deliver a package?---
+---Delivery efficiency---
+with logistics_dataset as (
+select
+      o.order_purchase_timestamp::date as purchase_date,
+      count(distinct o.order_id) as total_orders,
+      count(*) as total_items,
+      count(distinct oi.product_id) as unique_products,
+      sum(o.freight_value) as total_freight_value,
+
+      avg(
+          o.order_approved_at::date
+          - o.order_purchase_timestamp::date
+      ) as avg_approval_time,
+
+      avg(
+      	  case
+      	  	  when
+      	  	      o.order_delivered_customer is not null
+      	  	  and o.order_delivered_carrier is not null
+      	  	  then
+      	  	      o.order_delivered_customer::date
+          		  - o.order_delivered_carrier::date
+      	  end
+      ) as avg_time_on_route,
+      avg(o.delivery_delay_days) as avg_delivery_delay
+from analytics.fact_orders o
+left join analytics.fact_orders_items oi
+    on o.order_id = oi.order_id
+group by
+    o.order_purchase_timestamp::date
+)
+select *
+from  logistics_dataset
+where avg_delivery_delay is not null
+     
+
+
+
+      
+
+      
+      
