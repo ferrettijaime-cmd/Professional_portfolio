@@ -1,9 +1,10 @@
---What is the volume of items shipped?, How many are pending?, During what period are the most orders received?---
+--What is the volume of items shipped?, During what period are the most orders received?---
 ---What is the approval time?, How long does it take the delivery person to deliver a package?---
 ---Delivery efficiency---
 with logistics_dataset as (
 select
       o.order_purchase_timestamp::date as purchase_date,
+      c.customer_city,
       count(distinct o.order_id) as total_orders,
       count(*) as total_items,
       count(distinct oi.product_id) as unique_products,
@@ -28,13 +29,16 @@ select
 from analytics.fact_orders o
 left join analytics.fact_orders_items oi
     on o.order_id = oi.order_id
+left join analytics.dim_customers c
+    on o.customer_id = c.customer_id
 group by
-    o.order_purchase_timestamp::date
+    o.order_purchase_timestamp::date,
+    c.customer_city
 )
 select *
 from  logistics_dataset
 where avg_delivery_delay is not null
-     
+
 
 
 
