@@ -7,9 +7,7 @@ select
       c.customer_city,
       count(distinct o.order_id) as total_orders,
       count(*) as total_items,
-      count(distinct oi.product_id) as unique_products,
       sum(o.freight_value) as total_freight_value,
-
       avg(
           o.order_approved_at::date
           - o.order_purchase_timestamp::date
@@ -27,8 +25,6 @@ select
       ) as avg_time_on_route,
       avg(o.delivery_delay_days) as avg_delivery_delay
 from analytics.fact_orders o
-left join analytics.fact_orders_items oi
-    on o.order_id = oi.order_id
 left join analytics.dim_customers c
     on o.customer_id = c.customer_id
 group by
@@ -37,10 +33,8 @@ group by
 )
 select *
 from  logistics_dataset
-where avg_delivery_delay is not null
-
-
-
+where  avg_delivery_delay is not null
+and    avg_approval_time is not null
 
       
 
