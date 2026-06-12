@@ -59,7 +59,14 @@ Key observations:
 - Premium customers did not demonstrate a clear tolerance for delivery delays.
 - Purchase frequency showed weak relationships with customer satisfaction.
 
+![Late Delivery Analysis](Images/late_delivery_vs_churn.png)
+
+Customers receiving delayed orders did not exhibit significantly higher churn rates.
+
+
 Among all investigated factors, review scores provided the strongest signal, although the relationship was still relatively weak. Customers with review scores of 3 or below showed a slightly higher tendency to churn.
+
+![Review Score Analysis](Images/review_score_vs_churn.png)
 
 ## Machine Learning Models
 
@@ -78,6 +85,8 @@ XGBoost was selected as the final model.
 Although Logistic Regression achieved the highest Recall and F1 Score, it showed very poor class discrimination capability and classified most customers as churned.
 
 XGBoost achieved the highest ROC-AUC score (0.630), providing the best balance between churn detection and class separation.
+
+![Model Comparison](Images/model_selection_churn.png)
 
 ---
 
@@ -98,6 +107,8 @@ The optimal number of clusters was evaluated using:
 
 Although K=2 achieved the highest Silhouette Score, K=4 was selected because it produced more interpretable and actionable business segments.
 
+![Elbow Method](Images/elbow_method_classification.png)
+
 ## Customer Segments
 
 The model identified four customer groups:
@@ -106,6 +117,8 @@ The model identified four customer groups:
 - Recent Customers
 - Dormant Customers
 - High Value One-Time Customers
+
+![Customer Segments](Images/customer_segments_classification.png)
 
 ### Key Findings
 
