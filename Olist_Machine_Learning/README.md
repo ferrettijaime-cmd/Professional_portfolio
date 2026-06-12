@@ -9,7 +9,7 @@ The main objective of the project is to evaluate which modeling approach perform
 
 ## The tools used for this analysis are detailed below.
 
-![Tools_detail](Images\tools_detail.png)
+![Tools_detail](Images/tools_detail.png)
 
 # Statistical Forecasting Methods
 
@@ -17,11 +17,11 @@ The main objective of the project is to evaluate which modeling approach perform
 
 The line graph shows that most weekly peaks range between 100,000 and 300,000, with an extreme peak of approximately 400,000 in late 2017. The fact that the mean ($22,000) and median ($20,000) are so similar demonstrates that, on a daily basis, the behavior is highly symmetrical and the bias is controlled.
 
-![Sales_trend](Images\sales_trend.png)
+![Sales_trend](Images/sales_trend.png)
 
 Daily Consistency vs. Weekly Volume: The business maintains a highly stable and symmetrical daily operation, with an average daily revenue of $22,064 and controlled volatility ($\sigma = $12,594).Weekly Grouping Effect: By consolidating sales by week, the true potential of the business is revealed. The bimodal distribution of the histogram shows that, in weeks of regular operation, the company consistently generates between $100,000 and $250,000 in revenue per week.
 
-![Sales_distribution](Images\sales_distribution.png)
+![Sales_distribution](Images/sales_distribution.png)
 
 ## Final Result
 
@@ -45,7 +45,7 @@ Surprisingly, the Linear Regression model achieved the best overall performance,
 
 By constructing robust predictive variables (such as lags and 7- and 14-day moving averages), the original high volatility problem was simplified, allowing a simpler, more direct model to capture the trend more accurately and without the risk of overfitting that decision tree-based models often exhibit with stable time series.
 
-![Real_vs_Linear_R](Images\real_vs_linear_regr.png)
+![Real_vs_Linear_R](Images/real_vs_linear_regr.png)
 
 Visual Evaluation: Actual Values ​​vs. Prediction (Linear Regression)The comparative graph demonstrates that the Linear Regression model accurately captures the overall trend and macro cycles of daily revenue. Thanks to the moving average and lag variables (7- and 14-day features), the red line (prediction) acts as intelligent smoothing, faithfully tracking the ups and downs of the business throughout the months (May - September 2018).
 
