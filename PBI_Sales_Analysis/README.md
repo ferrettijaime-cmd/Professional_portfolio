@@ -10,13 +10,13 @@ Before being consumed by Power BI, the data was transformed and modeled in Postg
 
 A star schema was then built in Power BI using fact tables and dimensions, enabling the correct propagation of filters and multidimensional analysis of the information.
 
-![Star_schema](Images\Star_model.png)
+![Star_schema](Images/Star_model.png)
 
 # Sales Analysis Dashboard
 
 ## Figure 1. Sales Analysis Dashboard
 
-![Sales_analysis](Images\Sales_analysis.png)
+![Sales_analysis](Images/Sales_analysis.png)
 
 *This dashboard provides an overview of the platform's sales performance through five main areas of analysis:*
 
