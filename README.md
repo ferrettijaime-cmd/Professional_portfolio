@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Images/logo.png" width="150">
+  <img src="PBI_Sales_Analysis/Images/logo.png" width="150">
 </p>
 
 <h1 align="center">Data Analytics Portfolio</h1>
