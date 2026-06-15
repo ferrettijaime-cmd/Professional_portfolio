@@ -74,7 +74,7 @@ The delivery delay distribution shows a strong concentration of observations bef
 
 The histogram confirms that late deliveries are relatively uncommon compared to early deliveries.
 
-![Histogram_late_delivery](Images\late_delivery_distr.png)
+![Histogram_late_delivery](Images/late_delivery_distr.png)
 
 ## Outlier Analysis
 
@@ -82,7 +82,7 @@ A small number of extreme observations were identified through boxplot analysis.
 
 Although some deliveries experienced significant delays, these cases did not materially affect the overall delivery performance metrics.
 
-![Outliers_V](Images\outliers_values.png)
+![Outliers_V](Images/outliers_values.png)
 
 ## On-Time Delivery Rate (OTD)
 
