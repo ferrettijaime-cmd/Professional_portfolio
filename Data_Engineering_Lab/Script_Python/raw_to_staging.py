@@ -1,8 +1,13 @@
+from pathlib import Path
 import os
 import psycopg2
 from dotenv import load_dotenv
 
-load_dotenv()
+base_path = Path(__file__).resolve().parent.parent
+
+env_file = base_path / ".env"
+
+load_dotenv(env_file)
 user = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASSWORD")
 host = os.getenv("POSTGRES_HOST")
@@ -13,11 +18,10 @@ cursor = None
 connection = None
 
 try:
-    folder = r"C:\Professional_project\Data_Engineering_Lab\Script_SQL"
-    file = "staging_creation.sql"
-    path = os.path.join(folder, file)
+    base_path = Path(__file__).resolve().parent.parent
+    sql_file = base_path / "Script_SQL" / "staging_creation.sql"
 
-    with open(path, "r", encoding="utf-8") as f:
+    with open(sql_file, "r", encoding="utf-8") as f:
         sql = f.read()
 
     connection = psycopg2.connect(host=host, port=port, database=database, user=user, password=password)
@@ -28,7 +32,7 @@ try:
     print("Pipeline successfully constructed")
 
 except FileNotFoundError:
-    print(f"The file was not found in the path:{path}")
+    print(f"The file was not found in the path:{sql_file}")
 
 except Exception as e:
     if connection:

@@ -1,19 +1,28 @@
+from pathlib import Path
 import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
 
-customer_df = pd.read_csv(r"C:\Data_Base\Data\olist_customers_dataset.csv")
-order_items_df = pd.read_csv(r"C:\Data_Base\Data\olist_order_items_dataset.csv")
-order_payments_df = pd.read_csv(r"C:\Data_Base\Data\olist_order_payments_dataset.csv")
-order_reviews_df = pd.read_csv(r"C:\Data_Base\Data\olist_order_reviews_dataset.csv")
-orders_df = pd.read_csv(r"C:\Data_Base\Data\olist_orders_dataset.csv")
-products_df = pd.read_csv(r"C:\Data_Base\Data\olist_products_dataset.csv")
-geolocation_df = pd.read_csv(r"C:\Data_Base\Data\olist_geolocation_dataset.csv")
-sellers_df = pd.read_csv(r"C:\Data_Base\Data\olist_sellers_dataset.csv")
-product_category_name_translation_df = pd.read_csv(r"C:\Data_Base\Data\product_category_name_translation.csv")
+base_path = Path(__file__).resolve().parent.parent
 
-load_dotenv()
+data_path = base_path / "Data"
+
+customer_df = pd.read_csv(data_path/"olist_customers_dataset.csv")
+order_items_df = pd.read_csv(data_path/"olist_order_items_dataset.csv")
+order_payments_df = pd.read_csv(data_path/"olist_order_payments_dataset.csv")
+order_reviews_df = pd.read_csv(data_path/"olist_order_reviews_dataset.csv")
+orders_df = pd.read_csv(data_path/"olist_orders_dataset.csv")
+products_df = pd.read_csv(data_path/"olist_products_dataset.csv")
+geolocation_df = pd.read_csv(data_path/"olist_geolocation_dataset.csv")
+sellers_df = pd.read_csv(data_path/"olist_sellers_dataset.csv")
+product_category_name_translation_df = pd.read_csv(data_path/"product_category_name_translation.csv")
+
+base_path = Path(__file__).resolve().parent.parent
+
+env_file = base_path / ".env"
+
+load_dotenv(env_file)
 user = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASSWORD")
 host = os.getenv("POSTGRES_HOST")
@@ -76,6 +85,8 @@ try:
                    schema="raw",
                    if_exists="replace",
                    index=False)
+    
+    print("The data was successfully extracted!!!")
     
 except Exception as e:
     print(f'Detail: {e}')
