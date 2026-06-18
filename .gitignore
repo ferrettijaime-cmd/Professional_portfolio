@@ -5,3 +5,4 @@ Virtual_env_project
 Diagrams/
 Scripts/
 airflow.env
+*.env
