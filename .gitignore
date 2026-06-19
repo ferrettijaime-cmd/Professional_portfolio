@@ -9,3 +9,4 @@ airflow.env
 *.env.airflow
 /dag_processor_manager.log
 logs/
+__pycache__/
