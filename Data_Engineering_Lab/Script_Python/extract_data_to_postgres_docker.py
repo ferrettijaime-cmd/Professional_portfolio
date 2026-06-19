@@ -20,7 +20,10 @@ product_category_name_translation_df = pd.read_csv(data_path/"product_category_n
 
 base_path = Path(__file__).resolve().parent.parent
 
-env_file = base_path / ".env"
+if Path("/opt/airflow").exists():
+    env_file = base_path / ".env.airflow"
+else:
+    env_file = base_path / ".env"
 
 load_dotenv(env_file)
 user = os.getenv("POSTGRES_USER")
@@ -28,6 +31,8 @@ password = os.getenv("POSTGRES_PASSWORD")
 host = os.getenv("POSTGRES_HOST")
 port = os.getenv("POSTGRES_PORT")
 database = os.getenv("POSTGRES_DB")
+
+engine = None
 
 try:
     engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}")
@@ -92,5 +97,8 @@ except Exception as e:
     print(f'Detail: {e}')
     
 finally:
-    engine.dispose()
+    if engine:
+        engine.dispose()
+    
+    
 

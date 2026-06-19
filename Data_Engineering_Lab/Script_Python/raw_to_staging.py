@@ -5,7 +5,10 @@ from dotenv import load_dotenv
 
 base_path = Path(__file__).resolve().parent.parent
 
-env_file = base_path / ".env"
+if Path("/opt/airflow").exists():
+    env_file = base_path / ".env.airflow"
+else:
+    env_file = base_path / ".env"
 
 load_dotenv(env_file)
 user = os.getenv("POSTGRES_USER")
