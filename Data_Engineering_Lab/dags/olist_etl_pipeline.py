@@ -5,7 +5,7 @@ from airflow.operators.bash import BashOperator
 
 with DAG(
     dag_id="olist_etl_pipeline",
-    start_date=datetime(2025, 1, 1),
+    start_date=datetime(2026, 6, 18),
     schedule=None,
     catchup=False,
     tags=["etl", "postgres", "olist"],
