@@ -6,3 +6,4 @@ Diagrams/
 Scripts/
 airflow.env
 *.env
+*.env.airflow
