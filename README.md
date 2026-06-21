@@ -14,6 +14,7 @@ The projects focus on solving real-world business problems through data explorat
 - Python for Data Analytics
 - Machine Learning
 - Power BI Dashboard Development
+- Data Engineering
 - ETL Pipeline Design
 - Data Visualization
 - Customer Segmentation
@@ -26,6 +27,7 @@ The projects focus on solving real-world business problems through data explorat
 | Project | Description | Tools |
 |----------|-------------|--------|
 | [Churn and Marketing Analytics](./Churn_and_Marketing_Analytics) | Customer churn prediction and customer segmentation | Python, SQL, Machine Learning |
+| [Data Engineering Lab](./Data_Engineering_Lab) | End-to-end ETL and automate the entire workflow using Airflow orchestration | Python, SQL, Docker, Airflow |
 | [ETL Architecture](./ETL_Architecture) | ETL pipeline design and architecture | SQL, ETL |
 | [Olist Logistics Analysis](./Olist-Logistics-Analysis) | Logistics and delivery performance analysis | SQL, Power BI |
 | [Olist Machine Learning](./Olist_Machine_Learning) | Predictive modeling with e-commerce data | Python, Machine Learning |
