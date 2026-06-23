@@ -46,14 +46,14 @@ try:
     y_test = y.iloc[train_size:]
 
     X_train.to_sql(
-        name="X_traine_dataset",
+        name="x_train_dataset",
         con=engine,
         schema="features_training",
         if_exists="replace",
         index=False
     )
     X_test.to_sql(
-        name="X_test_dataset",
+        name="x_test_dataset",
         con=engine,
         schema="features_training",
         if_exists="replace",
