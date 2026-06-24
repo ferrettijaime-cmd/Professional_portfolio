@@ -11,7 +11,7 @@ neon_host = os.getenv("DB_HOST")
 neon_port = os.getenv("DB_PORT")
 neon_database = os.getenv("DB_NAME")
 
-load_dotenv("/opt/airflow/postgres_docker.env", override=True)
+load_dotenv("/opt/airflow/ml_forecasting_db.env", override=True)
 local_user = os.getenv("POSTGRES_USER")
 local_password = os.getenv("POSTGRES_PASSWORD")
 local_host = os.getenv("POSTGRES_HOST")

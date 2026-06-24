@@ -1,14 +1,10 @@
-from pathlib import Path
 import os
 from dotenv import load_dotenv
 from sqlalchemy.engine import URL
 from sqlalchemy import create_engine
 import pandas as pd
 
-base_dir = Path(__file__).resolve().parent.parent.parent
-file = base_dir / "ml_forecasting_db.env"
-
-load_dotenv(file)
+load_dotenv("/opt/airflow/ml_forecasting_db.env")
 user = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASSWORD")
 host = os.getenv("POSTGRES_HOST")
