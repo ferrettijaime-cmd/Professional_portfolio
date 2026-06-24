@@ -1,24 +1,17 @@
-from pathlib import Path
 import os
 from dotenv import load_dotenv
 from sqlalchemy.engine import URL
 from sqlalchemy import create_engine
 import pandas as pd
 
-base_dir_neon = Path(__file__).resolve().parent.parent.parent
-file_neondb = base_dir_neon / "neondb_credentials.env"
-
-base_dir_local = Path(__file__).resolve().parent.parent.parent
-file_ml_foresc = base_dir_local / "ml_forecasting_db.env"
-
-load_dotenv(file_neondb)
+load_dotenv("/opt/airflow/neondb_credentials.env")
 neon_user = os.getenv("DB_USER")
 neon_password = os.getenv("DB_PASSWORD")
 neon_host = os.getenv("DB_HOST")
 neon_port = os.getenv("DB_PORT")
 neon_database = os.getenv("DB_NAME")
 
-load_dotenv(file_ml_foresc, override=True)
+load_dotenv("/opt/airflow/postgres_docker.env", override=True)
 local_user = os.getenv("POSTGRES_USER")
 local_password = os.getenv("POSTGRES_PASSWORD")
 local_host = os.getenv("POSTGRES_HOST")
