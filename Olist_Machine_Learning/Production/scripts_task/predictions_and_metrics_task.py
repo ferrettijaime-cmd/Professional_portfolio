@@ -61,8 +61,10 @@ try:
     print("Data separation successfully completed!!!")
 
 except Exception as e:
+    print("During data extraction")
     import traceback
     traceback.print_exc()
+    raise
 
 try:
     from sklearn.linear_model import LinearRegression
@@ -94,8 +96,10 @@ try:
     print("Training and predictions successfully completed!!!")
 
 except Exception as e:
+    print("During training")
     import traceback
     traceback.print_exc()
+    raise
 
 try:
     from sklearn.metrics import (
@@ -127,8 +131,10 @@ try:
     print("Df of metrics results and predicted values ​​created with successes!!!")
 
 except Exception as e:
+    print("During the metrics result")
     import traceback
     traceback.print_exc()
+    raise
 
 try:
     metric_results.to_sql(
@@ -148,8 +154,10 @@ try:
     )
 
 except Exception as e:
+    print("During the data transmission phase to Postgres")
     import traceback
     traceback.print_exc()
+    raise
    
 finally:
     if engine:
