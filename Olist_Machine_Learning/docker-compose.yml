@@ -1,7 +1,7 @@
 services:
 
   airflow-init:
-    image: apache/airflow:2.10.5
+    build: .
 
     container_name: airflow_init_ml
 
@@ -18,7 +18,7 @@ services:
       bash /opt/airflow/init_airflow.sh
    
   airflow-webserver:
-    image: apache/airflow:2.10.5
+    build: .
 
     container_name: airflow_webserver_ml
 
@@ -38,6 +38,7 @@ services:
     volumes:
       - ./Production/dags:/opt/airflow/dags
       - ./Production/logs:/opt/airflow/logs
+      - ./Production/scripts_task:/opt/airflow/scripts_task
       - ./.env:/opt/airflow/.env
       - ./neondb_credentials.env:/opt/airflow/neondb_credentials.env
       - ./ml_forecasting_db.env:/opt/airflow/ml_forecasting_db.env
@@ -46,7 +47,7 @@ services:
     command: webserver
 
   airflow-scheduler:
-    image: apache/airflow:2.10.5
+    build: .
 
     container_name: airflow_scheduler_ml
 
@@ -62,6 +63,7 @@ services:
     volumes:
       - ./Production/dags:/opt/airflow/dags
       - ./Production/logs:/opt/airflow/logs
+      - ./Production/scripts_task:/opt/airflow/scripts_task
       - ./.env:/opt/airflow/.env
       - ./neondb_credentials.env:/opt/airflow/neondb_credentials.env
       - ./ml_forecasting_db.env:/opt/airflow/ml_forecasting_db.env
