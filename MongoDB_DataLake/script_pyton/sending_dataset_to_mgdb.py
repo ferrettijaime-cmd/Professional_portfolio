@@ -45,7 +45,7 @@ df = load_random_sample(
     r"C:\Data_Base\Bank_dataset\dataset.csv"
 )
 
-load_dotenv("NoSQL_MongoDB/credentials.env")
+load_dotenv("MongoDB_DataLake/credentials.env")
 MONGO_USER = os.getenv("MONGO_USER")
 MONGO_PASSWORD = os.getenv("MONGO_PASSWORD")
 MONGO_CLUSTER = os.getenv("MONGO_CLUSTER")
