@@ -10,3 +10,6 @@ airflow.env
 /dag_processor_manager.log
 logs/
 __pycache__/
+.vscode/
+spark_virtual_env/
+temp/
