@@ -89,7 +89,7 @@ local_silver_path = r"C:\Professional_project\MongoDB_DataLake\temp\silver"
 
 for file_name in os.listdir(local_silver_path):
 
-    # Solo subir archivos Parquet
+    
     if file_name.endswith(".parquet"):
 
         local_file = os.path.join(local_silver_path, file_name)
