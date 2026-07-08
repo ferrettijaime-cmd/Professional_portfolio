@@ -66,7 +66,7 @@ The dataset contains semi-structured JSON documents including:
 
 
 
-![MongoDB Collection](Images\mongodb.png)
+![MongoDB Collection](images/mongodb.png)
 
 
 ---
@@ -105,7 +105,7 @@ Containers created:
 
 
 
-![Azure Storage](Images\azure.png)
+![Azure Storage](images/azure.png)
 
 
 ---
